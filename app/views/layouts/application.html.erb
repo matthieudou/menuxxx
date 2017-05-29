@@ -10,8 +10,7 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <%= render 'shared/flashes' %>
   <%= yield %>
   <%= javascript_include_tag 'application' %>
 </body>
