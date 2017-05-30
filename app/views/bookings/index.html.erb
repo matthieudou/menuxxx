@@ -1,0 +1,14 @@
+<h1 class="text-center">Bookings</h1>
+
+<div class="container">
+  <div class="row">
+    <% @bookings.each do |booking| %>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+     <p><%= booking.hooker.name %></p>
+     <p><%= booking.start_date %></p>
+      <p><%= booking.end_date %></p>
+      <p><%= booking.special %></p>
+       </div>
+    <% end %>
+  </div>
+</div>
