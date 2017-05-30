@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
 
   before_action :find_review, only: [ :show, :destroy, :update, :edit ]
-  before_action :find_hooker, only: [ :create ]
 
   def index
     @reviews = Review.where(["user_id = ?", current_user.id])
@@ -13,7 +12,7 @@ class ReviewsController < ApplicationController
 
   def update
     @review.update(review_params)
-    redirect_to review_path(@review)
+    redirect_to hooker_path
   end
 
   def edit
@@ -21,6 +20,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @hooker = Hooker.find(params[:hooker_id])
     @review = Review.new
   end
 
@@ -48,10 +48,6 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:title, :content, :rating)
-  end
-
-  def find_hooker
-    @hooker = Hooker.find(hooker_id)
   end
 
   def find_review
