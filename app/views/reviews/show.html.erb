@@ -1,1 +1,10 @@
-show.html.erb
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3 text-center">
+      <h3><%= @review.title %></h3>
+      <p><%= @review.content %></p>
+      <p>Rating: <%= @review.rating %></p>
+      <%= link_to "Edit your review", edit_review_path(@review) %>
+    </div>
+  </div>
+</div>
