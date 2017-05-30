@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
 
- before_action :set_hooker, only: [:create, :new, :edit]
+ before_action :set_hooker, only: [:create, :new, :edit, :destroy]
 
  def index
   @bookings = Booking.all
@@ -27,14 +27,15 @@ def create
 end
 
 def edit
+  @booking = Booking.find(params[:id])
   unless current_user == @booking.user
     flash[:alert] = "You can't update an other person's booking"
     redirect_to hooker_booking_path(@hooker, @booking)
   end
-  @booking = Booking.find(params[:id])
 end
 
 def destroy
+    @booking = Booking.find(params[:id])
   unless current_user == @booking.user
     flash[:notice] = "You can't destroy a hooker that's not yours"
     redirect_to hooker_booking_path(@hooker, @booking)
