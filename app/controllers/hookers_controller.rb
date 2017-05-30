@@ -1,12 +1,11 @@
 class HookersController < ApplicationController
-
+  before_action :set_hooker, only: [:show, :edit, :update, :destroy]
   # passes all the hookers
   def index
     @hookers = Hooker.all
   end
 
   def show
-    @hooker = Hooker.find(params[:id])
   end
 
   def new
@@ -26,10 +25,16 @@ class HookersController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
+
+    if @hooker.valid?
+      @hooker.update(hooker_params)
+      redirect_to hooker_path(@hooker)
+    else
+      render :new
+    end
   end
 
   # user only allowed to destroy his hooker
@@ -40,6 +45,10 @@ class HookersController < ApplicationController
   end
 
   private
+
+  def set_hooker
+    @hooker = Hooker.find(params[:id])
+  end
 
   def hooker_params
     params.require(:hooker).permit(
