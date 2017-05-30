@@ -1,12 +1,11 @@
 class HookersController < ApplicationController
-
+  before_action :set_hooker, only: [:show, :edit, :update, :destroy]
   # passes all the hookers
   def index
     @hookers = Hooker.all
   end
 
   def show
-    @hooker = Hooker.find(params[:id])
   end
 
   def new
@@ -26,20 +25,39 @@ class HookersController < ApplicationController
   end
 
   def edit
-
+    unless current_user == @hooker.user
+      flash[:alert] = "You can't update an other person's hooker"
+      redirect_to hooker_path(@hooker)
+    end
   end
 
   def update
+    # only the creater should be able to update
+    if current_user == @hooker.user
+      if @hooker.update(hooker_params)
+        flash[:notice] = "Hooker well updated"
+        redirect_to hooker_path(@hooker)
+      else
+        render :new
+      end
+    end
   end
 
   # user only allowed to destroy his hooker
   def destroy
     # if current user hooker then destroy + flash message 'hooker destroyed'
     # if not current user.hooker then NOTHING + flash message 'you cannot destroy'
-
+    unless current_user == @hooker.user
+      flash[:notice] = "You can't destroy a hooker that's not yours"
+      redirect_to hooker_path(@hooker)
+    end
   end
 
   private
+
+  def set_hooker
+    @hooker = Hooker.find(params[:id])
+  end
 
   def hooker_params
     params.require(:hooker).permit(
