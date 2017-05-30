@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
 
- before_action :set_hooker
+ before_action :set_hooker, only: [:create, :new]
 
   def index
     @bookings = Booking.all
@@ -11,7 +11,7 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @booking = @hooker.bookings.build
+    @booking = Booking.new
   end
 
   def create
