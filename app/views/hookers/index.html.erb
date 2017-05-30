@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>list of all the hookers</h1>
+
+  <div class="list-group">
+    <% @hookers.each do |hooker| %>
+    <%= link_to hooker_path(hooker), class: "list-group-item" do %>
+    <%= hooker.name %>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+
