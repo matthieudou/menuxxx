@@ -1,11 +1,10 @@
 class ReviewsController < ApplicationController
 
   before_action :find_review, only: [ :show, :destroy, :update, :edit ]
-  before_action :find_user, only: [ :create, :index ]
   before_action :find_hooker, only: [ :create ]
 
   def index
-    @reviews = Review.where(["user_id = ?", @current_user])
+    @reviews = Review.where(["user_id = ?", current_user.id])
   end
 
   def show
@@ -27,7 +26,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.user = @current_user
+    @review.user = current_user
     @review.hooker = @hooker
     if @review.save
       redirect_to review_path(@review)
@@ -48,10 +47,6 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:title, :content, :rating)
-  end
-
-  def find_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
   def find_hooker
