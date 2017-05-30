@@ -13,8 +13,10 @@ class ReviewsController < ApplicationController
   def update
     if current_user == @review.user
       if @review.update(review_params)
+        flash[:notice] = "Review updated"
         redirect_to hooker_path(@review.hooker_id)
       else
+        flash[:alert] = "Invalid changes"
         render :new
       end
     end
@@ -22,7 +24,10 @@ class ReviewsController < ApplicationController
 
   def edit
     #find
-    redirect_to review_path(@review) unless current_user == @review.user
+    unless current_user == @review.user
+      flash[:alert] = "You can only update your own reviews"
+      redirect_to review_path(@review)
+    end
   end
 
   def new
