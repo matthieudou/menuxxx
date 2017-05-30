@@ -11,12 +11,18 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @review.update(review_params)
-    redirect_to hooker_path
+    if current_user == @review.user
+      if @review.update(review_params)
+        redirect_to hooker_path(@review.hooker_id)
+      else
+        render :new
+      end
+    end
   end
 
   def edit
     #find
+    redirect_to review_path(@review) unless current_user == @review.user
   end
 
   def new
