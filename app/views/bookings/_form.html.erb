@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <%= simple_form_for @booking do |f| %>
+
+        <%= f.input :start_date, as: :string, placeholder: "16/08/2016"  %>
+        <%= f.input :end_date, as: :string, placeholder: "16/08/2016"  %>
+        <%= f.input :special, as: :string, placeholder: "Little mermaid"  %>
+
+        <%= f.submit "Go", class: "btn btn-primary" %>
+    <% end %>
+    </div>
+  </div>
+</div>
+<%= link_to 'Back', hookers_path %>
+
+
