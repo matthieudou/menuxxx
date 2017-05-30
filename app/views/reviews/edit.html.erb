@@ -1,8 +1,3 @@
 <div class="container">
-  <%= simple_form_for [@hooker, @review] do |f| %>
-    <%= f.input :title %>
-    <%= f.input :content %>
-    <%= f.input :rating %>
-    <%= f.submit %>
-  <% end %>
+  <%= render 'form' %>
 </div>
