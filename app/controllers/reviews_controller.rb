@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
-
+    #find
   end
 
   def update
@@ -16,20 +16,20 @@ class ReviewsController < ApplicationController
     redirect_to review_path(@review)
   end
 
+  def edit
+    #find
+  end
+
   def new
     @review = Review.new
   end
 
-  def edit
-
-  end
-
   def create
+    @hooker = Hooker.find(params[:hooker_id])
     @review = Review.new(review_params)
-    @review.user = current_user
     @review.hooker = @hooker
     if @review.save
-      redirect_to review_path(@review)
+      redirect_to hooker_path(@review.hooker)
     else
       render :new
     end
