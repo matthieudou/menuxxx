@@ -28,6 +28,7 @@ class ReviewsController < ApplicationController
     @hooker = Hooker.find(params[:hooker_id])
     @review = Review.new(review_params)
     @review.hooker = @hooker
+    @review.user = current_user
     if @review.save
       redirect_to hooker_path(@review.hooker)
     else
