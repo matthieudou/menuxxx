@@ -18,6 +18,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.hooker = @hooker
     @booking.user = current_user
+
     if @booking.save
       redirect_to hooker_booking_path(@hooker, @booking)
     else
@@ -40,7 +41,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:star_date, :end_date, :special)
+    params.require(:booking).permit(:start_date, :end_date, :special)
   end
-
+  #{}"start_date"=>"1333", "end_date(1i)"=>"2017", "end_date(2i)"=>"5", "end_date(3i)"=>"30", "end_date(4i)"=>"13", "end_date(5i)"=>"50"
 end

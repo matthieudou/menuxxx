@@ -4,7 +4,7 @@
   <div class="row">
     <% @bookings.each do |booking| %>
     <div class="col-xs-12 col-sm-6 col-md-3">
-     <p><%= booking.hooker %></p>
+     <p><%= booking.hooker.name %></p>
      <p><%= booking.start_date %></p>
       <p><%= booking.end_date %></p>
       <p><%= booking.special %></p>
