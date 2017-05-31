@@ -51,6 +51,10 @@ class HookersController < ApplicationController
       flash[:notice] = "You can't destroy a hooker that's not yours"
       redirect_to hooker_path(@hooker)
     end
+
+    @hooker.destroy
+    redirect_to hookers_path
+
   end
 
   private
