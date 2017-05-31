@@ -68,5 +68,5 @@ end
 def booking_params
   params.require(:booking).permit(:start_date, :end_date, :special)
 end
-  #{}"start_date"=>"1333", "end_date(1i)"=>"2017", "end_date(2i)"=>"5", "end_date(3i)"=>"30", "end_date(4i)"=>"13", "end_date(5i)"=>"50"
+
 end

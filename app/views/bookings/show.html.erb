@@ -2,12 +2,17 @@
   <div class="row">
 
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-    <h1>Summarize of the Booking</h1>
+    <h1>Summary of the Booking</h1>
            <p><%= @booking.hooker.name %></p>
            <p><%= @booking.start_date %></p>
            <p><%= @booking.end_date %></p>
            <p><%= @booking.special %></p>
 
+<div class="form-group">
+                 <label>Total Cost : <%= @booking.total_price %> <i class="fa fa-eur" aria-hidden="true"></i>
+ </label>
+
+             </div>
 
 
 <%= link_to "Back to all your bookings", hooker_bookings_path(@hooker) %>
