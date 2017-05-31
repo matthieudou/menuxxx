@@ -69,7 +69,9 @@ class HookersController < ApplicationController
       :short_description,
       :long_description,
       :price,
-      :profile_picture
+      :profile_picture,
+      :photo,
+      :photo_cache
       )
   end
 end
