@@ -11,4 +11,7 @@ class Hooker < ApplicationRecord
   validates :short_description, presence: true
   validates :price, presence: true, numericality: true
   validates :user, presence: true
+
+  mount_uploader :profile_picture, PhotoUploader
+
 end

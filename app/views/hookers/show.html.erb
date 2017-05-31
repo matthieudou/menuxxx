@@ -1,7 +1,8 @@
+
 <div class="container">
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1 text-center">
-      <%= image_tag("https://i.ytimg.com/vi/BHE_TV3kC-E/maxresdefault.jpg", width: '500') %>
+      <%= cl_image_tag @hooker.profile_picture, height: 300, width: 400, crop: :fill %>
 
     </div>
   </div>
@@ -56,5 +57,3 @@
     </div>
   </div>
 </div>
-
-
