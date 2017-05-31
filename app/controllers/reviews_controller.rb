@@ -53,7 +53,7 @@ class ReviewsController < ApplicationController
       flash[:notice] = "You can't delete other people's reviews"
       redirect_to hooker_path(@hooker)
     end
-    @booking.destroy
+    @review.destroy
     redirect_to hooker_path(@hooker)
   end
 
