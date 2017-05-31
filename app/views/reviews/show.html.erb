@@ -5,6 +5,7 @@
       <p><%= @review.content %></p>
       <p>Rating: <%= @review.rating %></p>
       <%= link_to "Edit your review", edit_review_path(@review) %>
+      <%= link_to "Delete your review", review_path(@review), method: :delete %>
     </div>
   </div>
 </div>
