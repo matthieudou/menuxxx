@@ -1,8 +1,9 @@
 class BookingsController < ApplicationController
 
- before_action :set_hooker, only: [:create, :new, :edit, :destroy]
+ before_action :set_hooker
 
  def index
+
   @bookings = Booking.all
 end
 
@@ -34,14 +35,28 @@ def edit
   end
 end
 
+def update
+    # only the creater should be able to update
+    @booking = Booking.find(params[:id])
+    if current_user == @booking.user
+      if @booking.update(booking_params)
+        flash[:notice] = "Booked"
+         redirect_to hooker_booking_path(@hooker, @booking)
+      else
+        render :new
+      end
+    end
+end
+
+
 def destroy
     @booking = Booking.find(params[:id])
   unless current_user == @booking.user
-    flash[:notice] = "You can't destroy a hooker that's not yours"
+    flash[:alert] = "You can't cancel a fuck"
     redirect_to hooker_booking_path(@hooker, @booking)
   end
   @booking.destroy
-  redirect_to hooker_booking_path(@hooker, @booking)
+  redirect_to hooker_bookings_path(@hooker)
   end
 
 private
