@@ -49,7 +49,11 @@ class ReviewsController < ApplicationController
 
   def destroy
     @hooker = @review.hooker
-    @review.destroy
+    unless current_user == @review.user
+      flash[:notice] = "You can't delete other people's reviews"
+      redirect_to hooker_path(@hooker)
+    end
+    @booking.destroy
     redirect_to hooker_path(@hooker)
   end
 
