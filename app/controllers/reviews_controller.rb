@@ -41,6 +41,7 @@ class ReviewsController < ApplicationController
     @review.hooker = @hooker
     @review.user = current_user
     if @review.save
+      flash[:notice] = "Review added !"
       redirect_to hooker_path(@review.hooker)
     else
       render :new
@@ -54,6 +55,7 @@ class ReviewsController < ApplicationController
       redirect_to hooker_path(@hooker)
     end
     @review.destroy
+    flash[:notice] = "Review deleted !"
     redirect_to hooker_path(@hooker)
   end
 
