@@ -1,2 +1,15 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('http://ghk.h-cdn.co/assets/16/25/1600x800/landscape-1466619038-gh-062216-boobs.jpeg');">
+  <div class="banner-content">
+    <h1>MenuxXx</h1>
+    <p>rent some hookers</p>
+    <% if !user_signed_in? %>
+      <%= link_to new_user_session_path, class: "btn btn-primary btn-lg" do %>
+       SIGN IN <i class="fa fa-sign-in" aria-hidden="true"></i>
+      <% end %>
+    <% else %>
+      <%= link_to hookers_path, class: "btn btn-primary btn-lg" do %>
+       HOOKERS <i class="fa fa-hand-pointer-o" aria-hidden="true"></i>
+      <% end %>
+    <% end %>
+  </div>
+</div>
