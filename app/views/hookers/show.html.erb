@@ -1,2 +1,60 @@
-<h1><%= @hooker.name %></h1>
-<%= @hooker %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 text-center">
+      <%= image_tag("https://i.ytimg.com/vi/BHE_TV3kC-E/maxresdefault.jpg", width: '500') %>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 text-center" >
+      <% if current_user == @hooker.user %>
+        <%= link_to "Edit this page", edit_hooker_path(@hooker), class: "btn btn-primary" %>
+        <%= link_to "Delete profile", hooker_path(@hooker), method: :delete, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 text-center">
+      <h3><%= @hooker.name %></h3>
+      <p><%= @hooker.long_description %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-md-5 col-md-offset-1">
+      <div>
+        <i class="fa fa-home" aria-hidden="true"></i>  <span><%= @hooker.street %> <%= @hooker.street_nr %> <%= @hooker.postal_code %> <%= @hooker.city %></span>
+      </div>
+    </div>
+    <div class="col-xs-10 col-xs-offset-1 col-md-5 col-md-offset-1">
+      <div>
+        <i class="fa fa-money" aria-hidden="true"></i>  <span><%= @hooker.price %> <i class="fa fa-euro" aria-hidden="true"></i>/hour</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 text-center" >
+      <%= link_to "Book me!", new_hooker_booking_path(@hooker), class: "btn btn-danger" %>
+      <%= link_to "Write me a review!", new_hooker_review_path(@hooker), class: "btn btn-danger" %>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1" >
+      <% @hooker.reviews.each do |review| %>
+      <div class="well">
+        <%= link_to review_path(review) do %>
+          <div>
+            <span><%= review.title %></span>
+            <span><%= review.rating %></span>
+          </div>
+          <div>
+            <p><%= review.content %></p>
+          </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
