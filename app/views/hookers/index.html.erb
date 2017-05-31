@@ -1,12 +1,28 @@
 <div class="container">
-  <h1>list of all the hookers</h1>
 
-  <div class="list-group">
-    <% @hookers.each do |hooker| %>
-    <%= link_to hooker_path(hooker), class: "list-group-item" do %>
-    <%= hooker.name %>
-    <% end %>
-    <% end %>
+  <div class="page-header">
+    <h1>Hookers <small>You can find all the hookers here !</small></h1>
   </div>
-</div>
+  <div class="container">
+    <div class="row">
+      <% @hookers.each do |hooker| %>
+      <div class="col-xs-12 col-sm-4">
+        <!-- image url has to change with the url of the profile pic -->
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path hooker.profile_picture %>');">
+          <div class="card-category"><i class="fa fa-usd" aria-hidden="true"></i>
+            <%= hooker.price.floor %></div>
+            <div class="card-description">
+              <h2><%= hooker.name %></h2>
+              <p><%= hooker.short_description %></p>
+            </div>
+            <!-- link to logo has to change to the url with the profile pic of the user -->
+            <%= image_tag "https://placeholdit.imgix.net/~text?txtsize=9&txt=100%C3%97100&w=100&h=100", class: "card-user avatar" %>
+            <%= link_to hooker_path(hooker), class: "card-link" do %>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
