@@ -40,7 +40,7 @@ def update
     @booking = Booking.find(params[:id])
     if current_user == @booking.user
       if @booking.update(booking_params)
-        flash[:notice] = "Booking well updated"
+        flash[:notice] = "Booked"
          redirect_to hooker_booking_path(@hooker, @booking)
       else
         render :new
@@ -52,7 +52,7 @@ end
 def destroy
     @booking = Booking.find(params[:id])
   unless current_user == @booking.user
-    flash[:notice] = "You can't cancel a fuck"
+    flash[:alert] = "You can't cancel a fuck"
     redirect_to hooker_booking_path(@hooker, @booking)
   end
   @booking.destroy
