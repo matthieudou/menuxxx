@@ -3,6 +3,6 @@ class PhotoUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
 
   def default_url
-    "https://www.w3schools.com/css/trolltunga.jpg"
+    "https://0.s3.envato.com/files/128276388/video_preview_0001.jpg"
   end
 end
