@@ -2,8 +2,14 @@
   <div class="banner-content">
     <h1>MenuxXx</h1>
     <p>rent some hookers</p>
-    <%= link_to new_user_session_path, class: "btn btn-primary btn-lg" do %>
-      SIGN IN <i class="fa fa-sign-in" aria-hidden="true"></i>
+    <% if !user_signed_in? %>
+      <%= link_to new_user_session_path, class: "btn btn-primary btn-lg" do %>
+       SIGN IN <i class="fa fa-sign-in" aria-hidden="true"></i>
+      <% end %>
+    <% else %>
+      <%= link_to hookers_path, class: "btn btn-primary btn-lg" do %>
+       HOOKERS <i class="fa fa-hand-pointer-o" aria-hidden="true"></i>
+      <% end %>
     <% end %>
   </div>
 </div>
