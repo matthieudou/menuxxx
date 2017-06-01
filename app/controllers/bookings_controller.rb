@@ -1,10 +1,10 @@
 class BookingsController < ApplicationController
 
- before_action :set_hooker
 
+ before_action :set_hooker, except: [:all_bookings]
  def index
 
-  @bookings = Booking.all
+  @bookings = Booking.where(["user_id = ?", current_user.id])
 end
 
 def show
@@ -57,6 +57,11 @@ def destroy
   end
   @booking.destroy
   redirect_to hooker_bookings_path(@hooker)
+  end
+
+  def all_bookings
+
+    @bookings = current_user.bookings
   end
 
 private
