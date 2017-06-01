@@ -11,4 +11,11 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :username, presence: true
   validates :date_of_birth, presence: true
+  validate :old_enough?
+
+  protected
+
+  def old_enough?
+    errors.add(:date_of_birth, "You're too young.") unless date_of_birth < 18.years.ago
+  end
 end
