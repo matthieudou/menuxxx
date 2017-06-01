@@ -1,80 +1,88 @@
 <% if user_signed_in? %>
-<div class="navbar-wagon">
-  <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-  <%= image_tag "logo.png" %>
-  <% end %>
+  <div class="navbar-wagon">
+    <!-- Logo -->
+    <%= link_to hookers_path, class: "navbar-wagon-brand" do %>
+    <%= image_tag "logo.png" %>
+    <% end %>
+    <!-- end Logo -->
 
-  <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
-
-    <!-- Search form -->
-    <!-- <form action="" class="navbar-wagon-search">
-      <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
-      <button type="submit" class="navbar-wagon-search-btn">
-        <i class="fa fa-search"></i>
-      </button>
-    </form> -->
-
-    <!-- Different navigation if login or not -->
-    <% if user_signed_in? %>
-
-    <!-- Notification -->
-
-
-    <%# link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
-        <!-- <div class="badge-container">
-          <i class="fa fa-envelope-o"></i>
-          <div class="badge badge-blue">3</div>
-        </div> -->
-        <%# end %>
-
-        <!-- Profile picture and dropdown -->
-        <div class="navbar-wagon-item">
-          <div class="dropdown">
-            <%= image_tag "logo2.jpg", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-              <li>
-                <%= link_to edit_user_registration_path do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Edit profile") %>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to hookers_path do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-                <% end %>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Button (call-to-action) -->
-        <%= link_to t(".top_call_to_action", default: "New Hooker"), new_hooker_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
-
-        <% else %>
-
-        <!-- Login text link -->
-        <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-
-        <% end %>
-
-      </div>
-
-      <!-- Dropdown list appearing on mobile only -->
-      <div class="navbar-wagon-item hidden-md hidden-lg">
+    <!-- Right Navigation -->
+    <div class="navbar-wagon-right hidden-xs hidden-sm">
+      <!-- Profile picture and dropdown -->
+      <div class="navbar-wagon-item">
         <div class="dropdown">
-          <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+          <%= image_tag "logo2.jpg", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li><a href="#">Some mobile link</a></li>
-            <li><a href="#">Other one</a></li>
-            <li><a href="#">Other one</a></li>
+            <li>
+              <%= link_to edit_user_registration_path do %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "Edit profile") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to hookers_path do %>
+                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to all_bookings_bookings_path do %>
+                <i class="fa fa-sign-out"></i> My bookings
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+              <% end %>
+            </li>
           </ul>
         </div>
       </div>
+      <!-- end profile pic and dropdown -->
+
+      <!-- Button (call-to-action) -->
+      <%= link_to t(".top_call_to_action", default: "New Hooker"), new_hooker_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
     </div>
+    <!-- end right navigation -->
+
+    <!-- Dropdown list appearing on mobile only -->
+    <div class="navbar-wagon-item hidden-md hidden-lg">
+      <div class="dropdown">
+        <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li>
+            <%= link_to hookers_path do %>
+            <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to all_bookings_bookings_path do %>
+            <i class="fa fa-sign-out"></i> My bookings
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- end dropdown list for mobile -->
+  </div>
+  <!-- end navbar Wagon -->
 <% end %>
+<!-- SOME ADDINGS TO EVENTUALLY IMPLEMENT -->
+<!-- Search form -->
+<!-- <form action="" class="navbar-wagon-search">
+  <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
+  <button type="submit" class="navbar-wagon-search-btn">
+    <i class="fa fa-search"></i>
+  </button>
+</form> -->
+
+<%# link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
+<!-- <div class="badge-container">
+  <i class="fa fa-envelope-o"></i>
+  <div class="badge badge-blue">3</div>
+</div> -->
+<%# end %>
+

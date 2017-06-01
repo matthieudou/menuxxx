@@ -3,10 +3,12 @@
     <div class="col-xs-6 col-xs-offset-3 text-center">
       <h3><%= @review.title.upcase %> </h3>
       <p><%= @review.content %></p>
+
       <p>Rating: <%= @review.rating %> <i class="fa fa-heart" aria-hidden="true"></i></p>
       <p>comment made by <%= @review.user.username %></p>
       <%= link_to "Edit your review", edit_review_path(@review) %>
       <%= link_to "Delete your review", review_path(@review), method: :delete %>
+
     </div>
   </div>
 </div>
