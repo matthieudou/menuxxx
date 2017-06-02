@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :reviews
   validates :email, presence: true
-  validates :username, presence: true
+  validates :username, presence: true, uniqueness: true
   validates :date_of_birth, presence: true
   validate :old_enough?
   validates :email, :email_format => { :message => 'this is not a valid email' }
