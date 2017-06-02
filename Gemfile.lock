@@ -116,6 +116,12 @@ GEM
       mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
     pg (0.20.0)
+    postmark (1.10.0)
+      json
+      rake
+    postmark-rails (0.15.0)
+      actionmailer (>= 3.0.0)
+      postmark (~> 1.10.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -220,6 +226,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   pg
+  postmark-rails
   pry-byebug
   pry-rails
   puma

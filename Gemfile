@@ -20,6 +20,7 @@ gem 'carrierwave', '~> 0.11.2'
 
 
 gem 'devise'
+gem 'postmark-rails'
 
 group :development, :test do
   gem 'binding_of_caller'
