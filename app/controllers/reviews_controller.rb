@@ -23,7 +23,6 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    #find
     unless current_user == @review.user
       flash[:alert] = "You can only update your own reviews"
       redirect_to review_path(@review)
@@ -42,24 +41,26 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     if @review.save
       flash[:notice] = "Review added !"
-      redirect_to hooker_path(@hooker)
+      respond_to do |format|
+        format.html { redirect_to hooker_path(@hooker) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
     else
-      render 'hookers/show'
+      respond_to do |format|
+        format.html { render 'hookers/show' }
+        format.js
+      end
     end
   end
 
   def destroy
-    @hooker = @review.hooker
     unless current_user == @review.user
       flash[:alert] = "You can't delete other people's reviews"
-      redirect_to hooker_path(@hooker)
+      redirect_to hooker_path(@review.user)
     end
     @review.destroy
     flash[:notice] = "Review deleted !"
-    redirect_to hooker_path(@hooker)
   end
-
-
 
   private
 

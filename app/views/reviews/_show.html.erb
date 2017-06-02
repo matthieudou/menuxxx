@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default" data-review-id="<%= review.id %>">
   <div class="panel-heading">
     <div class="panel-title">
       <%= review.title %>
@@ -31,7 +31,7 @@
     <%= link_to edit_review_path(review) do %>
     <i class="fa fa-pencil-square-o" aria-hidden="true"></i> update
     <% end %>
-    <%= link_to review_path(review), method: :delete, class: "pull-right" do %>
+    <%= link_to review_path(review), method: :delete, remote: true, class: "pull-right" do %>
     delete <i class="fa fa-trash-o" aria-hidden="true"></i>
     <% end %>
   </div>
