@@ -16,8 +16,8 @@ class HookersController < ApplicationController
       #             :height  => 32
       #            })
       marker.infowindow maxWidth: 80
-      marker.infowindow "<h2>#{hooker_url}</h2>
-                          <div><img src='#{hooker.profile_picture}' alt="" /></div>"
+      marker.infowindow "<h4>#{hooker_url}</h4>
+                          <div><img src='#{hooker.profile_picture}' width=200px/></div>"
     end
   end
 
