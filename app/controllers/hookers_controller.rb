@@ -7,8 +7,17 @@ class HookersController < ApplicationController
      @hookers = Hooker.where.not(latitude: nil, longitude: nil)
 
     @hash = Gmaps4rails.build_markers(@hookers) do |hooker, marker|
+      hooker_url = view_context.link_to hooker.name, hooker_path(hooker)
       marker.lat hooker.latitude
       marker.lng hooker.longitude
+      # marker.picture({
+      #             :url => ,
+      #             :width   => 32,
+      #             :height  => 32
+      #            })
+      marker.infowindow maxWidth: 80
+      marker.infowindow "<h2>#{hooker_url}</h2>
+                          <div><img src='#{hooker.profile_picture}' alt="" /></div>"
     end
   end
 
