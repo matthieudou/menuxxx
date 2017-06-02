@@ -24,7 +24,7 @@ gem "gmaps4rails"
 
 
 gem 'devise'
-gem 'postmark-rails'
+gem 'validates_email_format_of'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"

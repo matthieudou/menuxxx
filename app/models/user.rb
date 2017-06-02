@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validates :username, presence: true
   validates :date_of_birth, presence: true
   validate :old_enough?
+  validates :email, :email_format => { :message => 'this is not a valid email' }
 
   after_create :send_welcome_email
 
