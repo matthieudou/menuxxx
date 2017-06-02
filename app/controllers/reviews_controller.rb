@@ -14,10 +14,15 @@ class ReviewsController < ApplicationController
     if current_user == @review.user
       if @review.update(review_params)
         flash[:notice] = "Review updated"
-        redirect_to hooker_path(@review.hooker_id)
+        respond_to do |format|
+        format.html { redirect_to hooker_path(@hooker) }
+        format.js  # <-- will render `app/views/reviews/update.js.erb`
+      end
       else
-        flash[:alert] = "Invalid changes"
-        render :new
+        respond_to do |format|
+        format.html { render :new }
+        format.js
+      end
       end
     end
   end

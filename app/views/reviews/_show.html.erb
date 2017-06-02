@@ -28,10 +28,31 @@
   </div>
   <% if current_user == review.user %>
   <div class="panel-footer">
-    <%= link_to edit_review_path(review) do %>
-    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> update
-    <% end %>
-    <%= link_to review_path(review), method: :delete, remote: true, class: "pull-right" do %>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-modal">
+      <i class="fa fa-pencil-square-o" aria-hidden="true"></i> update
+    </button>
+
+    <!-- here comes the update modal -->
+    <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Edit review</h4>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for [review], remote: true do |f| %>
+            <%= f.input :title, label: "Title (max. 50 chars.)" %>
+            <%= f.input :content, label: "Write a review (max. 700 chars.)" %>
+            <%= f.input :rating, collection: (0..5), label: "Rating:"%>
+            <%= f.button :submit %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- end of the modal -->
+    <%= link_to review_path(review), method: :delete, remote: true, class: "pull-right btn btn-primary" do %>
     delete <i class="fa fa-trash-o" aria-hidden="true"></i>
     <% end %>
   </div>

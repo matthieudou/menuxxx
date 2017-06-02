@@ -11,14 +11,21 @@
             <p>
                 <%= @hooker.long_description %>
             </p>
-            <div class="list-group">
-              <div class="list-group-item">
-                <i class="fa fa-home" aria-hidden="true"></i>  <span><%= @hooker.street %> <%= @hooker.street_nr %> <%= @hooker.postal_code %> <%= @hooker.city %></span>
-              </div>
-              <div class="list-group-item">
+            <hr>
+            <div class="well">
+              <i class="fa fa-home" aria-hidden="true"></i>
+              <span>
+                <%= @hooker.street %>
+                <%= @hooker.street_nr %>
+                <%= @hooker.postal_code %>
+                <%= @hooker.city %>
+              </span>
+              <span class="pull-right">
                 <i class="fa fa-money" aria-hidden="true"></i>
-                <strong class="text"><%= @hooker.price %> € </strong>/ hour
-              </div>
+                <strong class="text">
+                  <%= @hooker.price %> €
+                </strong>/ hour
+              </span>
             </div>
 
           <p>
@@ -45,7 +52,7 @@
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1" id="reviews">
       <% @hooker.reviews.each do |review| %>
-        <%= render 'reviews/show', review: review %>
+        <%= render 'reviews/show', hooker: @hooker, review: review %>
       <% end %>
     </div>
   </div>
@@ -58,6 +65,5 @@
     </div>
   </div>
   <!-- end reviews form -->
-
 
 </div>
