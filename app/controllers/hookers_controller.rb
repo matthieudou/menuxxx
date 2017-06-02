@@ -3,6 +3,13 @@ class HookersController < ApplicationController
   # passes all the hookers
   def index
     @hookers = Hooker.all
+
+     @hookers = Hooker.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@hookers) do |hooker, marker|
+      marker.lat hooker.latitude
+      marker.lng hooker.longitude
+    end
   end
 
   def show
@@ -76,7 +83,8 @@ class HookersController < ApplicationController
       :price,
       :profile_picture,
       :photo,
-      :photo_cache
+      :photo_cache,
+      :address
       )
   end
 end

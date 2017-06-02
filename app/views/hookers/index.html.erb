@@ -6,9 +6,31 @@
   <div class="container">
     <div class="row">
       <% @hookers.each do |hooker| %>
+
         <%= render 'card', hooker: hooker %>
       <% end %>
+      
+      <div id="map" style="width: 70%; height: 400px;"></div>
+      </div>
+
     </div>
   </div>
 </div>
 
+<% content_for(:after_js) do %>
+  <script type="text/javascript">
+    $(document).on('ready', function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function(){
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  </script>
+<% end %>
