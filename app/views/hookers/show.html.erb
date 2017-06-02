@@ -1,50 +1,40 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-10 col-xs-offset-1">
-      <div class="thumbnail">
-        <div class="col-xs-10 col-xs-offset-1 text-center">
-          <%= image_tag @hooker.profile_picture, height: 300, style: "margin: 20px;" %>
-        </div>
+    <div class="col-xs-10 col-xs-offset-1 well">
+        <%= image_tag @hooker.profile_picture, height: 300, style: "margin: 20px;" %>
         <div class="caption">
-            <h3><%= @hooker.name %> <small><%= @hooker.short_description %></small></h3>
-            <p>
-                <%= @hooker.long_description %>
-            </p>
-            <hr>
-            <div class="well">
-              <i class="fa fa-home" aria-hidden="true"></i>
-              <span>
-                <%= @hooker.street %>
-                <%= @hooker.street_nr %>
-                <%= @hooker.postal_code %>
-                <%= @hooker.city %>
-              </span>
-              <span class="pull-right">
-                <i class="fa fa-money" aria-hidden="true"></i>
-                <strong class="text">
-                  <%= @hooker.price %> €
-                </strong>/ hour
-              </span>
-            </div>
-
+          <h3><%= @hooker.name %> <small><%= @hooker.short_description %></small></h3>
           <p>
-            <%= link_to "Book me!", new_hooker_booking_path(@hooker), class: "btn btn-danger" %>
-            <% if current_user == @hooker.user %>
-              <span class="pull-right">
-                <%= link_to edit_hooker_path(@hooker), class: "btn btn-primary" do %>
-                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                Edit hooker
-                <% end %>
-                <%= link_to hooker_path(@hooker), method: :delete, class: "btn btn-primary" do %>
-                  <i class="fa fa-trash-o" aria-hidden="true"></i>
-                  Delete hooker
-                <% end %>
-              </span>
-            <% end %>
+            <%= @hooker.long_description %>
           </p>
-          </div>
+          <div class="well">
+          <i class="fa fa-home" aria-hidden="true"></i>
+          <span>
+            <%= @hooker.address %>
+          </span>
+          <span class="pull-right">
+            <i class="fa fa-money" aria-hidden="true"></i>
+            <strong class="text">
+              <%= @hooker.price %> €
+            </strong>/ hour
+          </span>
         </div>
+        <p>
+          <%= link_to "Book me!", new_hooker_booking_path(@hooker), class: "btn btn-danger" %>
+          <% if current_user == @hooker.user %>
+            <span class="pull-right">
+              <%= link_to edit_hooker_path(@hooker), class: "btn btn-primary" do %>
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+              Edit hooker
+              <% end %>
+              <%= link_to hooker_path(@hooker), method: :delete, class: "btn btn-primary" do %>
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                Delete hooker
+              <% end %>
+            </span>
+          <% end %>
+        </p>
       </div>
     </div>
   </div>
@@ -65,5 +55,4 @@
     </div>
   </div>
   <!-- end reviews form -->
-
 </div>
