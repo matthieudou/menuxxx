@@ -11,9 +11,18 @@ class User < ApplicationRecord
   validates :date_of_birth, presence: true
   validate :old_enough?
 
+  after_create :send_welcome_email
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
+  end
+
   protected
 
   def old_enough?
     errors.add(:date_of_birth, "You're too young.") unless date_of_birth < 18.years.ago
   end
-end
+
+ end
