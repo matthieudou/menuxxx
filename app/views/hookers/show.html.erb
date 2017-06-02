@@ -34,47 +34,18 @@
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1" >
       <% @hooker.reviews.each do |review| %>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <div class="panel-title">
-              <%= review.title %>
-              <div class="pull-right">
-                <% review.rating.times do %>
-                  <i class="fa fa-heart" aria-hidden="true"></i>
-                <% end %>
-                <% (5-review.rating).times do %>
-                  <i class="fa fa-heart-o" aria-hidden="true"></i>
-                <% end %>
-              </div>
-            </div>
-          </div>
-          <div class="panel-body">
-            <p>
-              <%= review.content %>
-            </p>
-            <div class="label label-warning pull-left">
-              <%= review.user.username %>
-            </div>
-            <div class="label label-success pull-right">
-              <%= review.created_at.to_date %>
-              <% if review.created_at != review.updated_at %>
-                <small>Updated</small>
-              <% end %>
-            </div>
-          </div>
-          <% if current_user == review.user %>
-            <div class="panel-footer">
-              <%= link_to edit_review_path(review) do %>
-                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> update
-              <% end %>
-              <%= link_to review_path(review), method: :delete, class: "pull-right" do %>
-                delete <i class="fa fa-trash-o" aria-hidden="true"></i>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
+        <%= render 'reviews/show', review: review %>
       <% end %>
     </div>
   </div>
   <!-- end reviews -->
+  <!-- reviews form -->
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 well" >
+    <h4>Write me a review</h4>
+      <%= render 'reviews/form', hooker: @hooker, review: @review %>
+    </div>
+  </div>
+
+
 </div>

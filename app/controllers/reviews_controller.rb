@@ -42,9 +42,9 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     if @review.save
       flash[:notice] = "Review added !"
-      redirect_to hooker_path(@review.hooker)
+      redirect_to hooker_path(@hooker)
     else
-      render :new
+      render 'hookers/show'
     end
   end
 
