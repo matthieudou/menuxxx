@@ -4,10 +4,7 @@ class Hooker < ApplicationRecord
   has_many :bookings, dependent: :destroy
 
   validates :name, presence: true
-  validates :city, presence: true
-  validates :street, presence: true
-  validates :postal_code, presence: true, numericality: true
-  validates :street_nr, presence: true
+  validates :address, presence: true
   validates :short_description, presence: true
   validates :price, presence: true, numericality: true
   validates :user, presence: true
@@ -15,6 +12,9 @@ class Hooker < ApplicationRecord
   validates_length_of :long_description, :maximum => 700
 
   mount_uploader :profile_picture, PhotoUploader
+
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
 end
 

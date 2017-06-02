@@ -1,10 +1,7 @@
 <div class="container">
   <%= simple_form_for @hooker do |f| %>
-  <%= f.input :name %>
-  <%= f.input :street %>
-  <%= f.input :street_nr %>
-  <%= f.input :city %>
-  <%= f.input :postal_code %>
+  <%= f.input :name, :placeholder => "The Mermaid of The Night",:label => "Your hooker nickname" %>
+  <%= f.input :address, :placeholder => "Enter your address" %>
   <%= f.input :short_description, :label => "Write a short description (max. 60 chars.)" %>
   <%= f.input :long_description, :label => "Tell us about yourself (max. 700 chars.)" %>
   <%= f.input :price, :label => "What's the price you want to charge per hour" %>
@@ -13,3 +10,5 @@
   <%= f.submit %>
   <% end %>
 </div>
+
+
