@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
 
     resources :hookers do
-      resources :reviews, only: [ :create ]
+      resources :reviews, only: [ :create, :update ]
       resources :bookings
     end
     resources :reviews, only: [ :show, :update, :edit, :destroy ]
