@@ -1,0 +1,13 @@
+<div class="col-xs-12 col-sm-4">
+        <!-- image url has to change with the url of the profile pic -->
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= hooker.profile_picture %>');">
+          <div class="card-category"><i class="fa fa-usd" aria-hidden="true"></i>
+            <%= hooker.price.floor %></div>
+            <div class="card-description">
+              <h2><%= hooker.name %></h2>
+              <p><%= hooker.short_description %></p>
+            </div>
+            <%= link_to hooker_path(hooker), class: "card-link" do %>
+            <% end %>
+          </div>
+        </div>

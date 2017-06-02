@@ -1,6 +1,6 @@
-<%= simple_form_for [@hooker, @review] do |f| %>
-  <%= f.input :title, label: "Title (max. 50 chars.)", class: "form_control" %>
-  <%= f.input :content, label: "Write a review (max. 700 chars.)", class: "form_control" %>
-  <%= f.input :rating, collection: (0..5), label: "Rating: ", class: "form_control" %>
-  <%= f.submit %>
+  <%= simple_form_for [hooker, review], remote: true do |f| %>
+  <%= f.input :title, label: "Title (max. 50 chars.)" %>
+  <%= f.input :content, label: "Write a review (max. 700 chars.)" %>
+  <%= f.input :rating, collection: (0..5), label: "Rating:"%>
+  <%= f.button :submit %>
 <% end %>
