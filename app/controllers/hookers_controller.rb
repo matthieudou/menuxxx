@@ -9,6 +9,7 @@ class HookersController < ApplicationController
     @hash = Gmaps4rails.build_markers(@hookers) do |hooker, marker|
       marker.lat hooker.latitude
       marker.lng hooker.longitude
+    end
   end
 
   def show
