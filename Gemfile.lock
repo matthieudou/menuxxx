@@ -126,12 +126,6 @@ GEM
       mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
     pg (0.20.0)
-    postmark (1.10.0)
-      json
-      rake
-    postmark-rails (0.15.0)
-      actionmailer (>= 3.0.0)
-      postmark (~> 1.10.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -214,6 +208,8 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.4)
+    validates_email_format_of (1.6.3)
+      i18n
     warden (1.2.7)
       rack (>= 1.0)
     websocket-driver (0.6.5)
@@ -240,7 +236,6 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   pg
-  postmark-rails
   pry-byebug
   pry-rails
   puma
@@ -252,6 +247,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   uglifier
+  validates_email_format_of
 
 RUBY VERSION
    ruby 2.3.3p222
