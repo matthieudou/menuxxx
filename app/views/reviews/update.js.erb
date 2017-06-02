@@ -4,12 +4,15 @@
   // Render new review form with errors
   $('#new_review').html("<%= j render 'reviews/form', hooker: @hooker, review: @review %>");
 <% else %>
+
+  $('#edit-modal').modal('hide');
+  $('.modal-backdrop').hide();
+  $('body').removeClass('modal-open');
+
   // Create a paragraph for the new review. But hide it.
-  var new_review = $("<%= j render 'reviews/show', review: @review %>").hide();
+  var new_review = $("<%= j render 'reviews/show', review: @review %>");
   // Add it to the DOM, at the end of the existing reviews. It's still hidden.
-  $('#reviews').append(new_review);
+  $('[data-review-id=<%= @review.id %>]').html(new_review);
   // Show the new review with an animation!
-  new_review.fadeIn();
   // Reset the form
-  //$('#new_review').html("<%= j render 'reviews/form', hooker: @hooker, review: Review.new %>");
 <% end %>

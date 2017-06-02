@@ -41,7 +41,7 @@
           <h4 class="modal-title" id="myModalLabel">Edit review</h4>
         </div>
         <div class="modal-body">
-          <%= simple_form_for [review], remote: true do |f| %>
+          <%= simple_form_for (review), remote: true do |f| %>
             <%= f.input :title, label: "Title (max. 50 chars.)" %>
             <%= f.input :content, label: "Write a review (max. 700 chars.)" %>
             <%= f.input :rating, collection: (0..5), label: "Rating:"%>
